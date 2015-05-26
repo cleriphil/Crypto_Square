@@ -17,7 +17,6 @@ var preEncryptSplit = function(message) {
 };
 
 var encrypt = function(messagePieces) {
-  // debugger;
   var encryptedMessage = ""
   for(var i = 0; i < messagePieces[0].length; i += 1) {
     messagePieces.forEach(function(piece) {
@@ -28,3 +27,17 @@ var encrypt = function(messagePieces) {
   };
   return encryptedMessage
 };
+
+
+
+$(document).ready(function() {
+  $("form#message_input").submit(function(event) {
+    var message = $("input#message_to_encrypt").val();
+    debugger;
+    message = preEncrypt(message);
+    messagePieces = preEncryptSplit(message);
+    encryptedMessage = encrypt(messagePieces);
+    $(".result").text(encryptedMessage);
+    event.preventDefault();
+  });
+});
